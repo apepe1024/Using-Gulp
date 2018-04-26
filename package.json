@@ -1,0 +1,27 @@
+{
+  "name": "twitter-interface",
+  "version": "1.0.0",
+  "description": "Treehouse Techdegree Project 7, April 2018.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "^8.9.3"
+  },
+  "author": "Alessandro Pepe, github apepe1024",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.5.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0"
+  }
+}
