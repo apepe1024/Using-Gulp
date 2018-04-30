@@ -11,7 +11,7 @@ const imagemin = require('gulp-imagemin');
 const connect = require('gulp-connect');
 const del = require('del');
 
-gulp.task("concatScripts", function() {
+gulp.task("concatScripts", () => {
     return gulp.src([
         'js/circle/jquery.js',
         'js/circle/autogrow.js',
@@ -23,19 +23,19 @@ gulp.task("concatScripts", function() {
      .pipe(gulp.dest('js'))
 });
 
-gulp.task("minifyScripts", ["concatScripts"], function() {
+gulp.task("minifyScripts", ["concatScripts"], () => {
     return gulp.src('js/all.js')
      .pipe(uglify())
      .pipe(rename('all.min.js'))
      .pipe(gulp.dest('js'));
 });
 
-gulp.task("scripts", ["concatScripts", "minifyScripts"], function() {
+gulp.task("scripts", ["concatScripts", "minifyScripts"], () => {
     return gulp.src('js/all.min.js')
      .pipe(gulp.dest('dist'));
 });
 
-gulp.task("concatStyles", function() {
+gulp.task("concatStyles", () => {
     return gulp.src("sass/global.scss")
      .pipe(maps.init())
      .pipe(sass())
@@ -44,7 +44,7 @@ gulp.task("concatStyles", function() {
      .pipe(gulp.dest('css'));
 });
 
-gulp.task("uglifyStyles", ["concatStyles"], function() {
+gulp.task("uglifyStyles", ["concatStyles"], () => {
     return gulp.src("css/all.css")
      .pipe(cleanCSS())
      .pipe(rename('all.min.css'))
@@ -52,7 +52,7 @@ gulp.task("uglifyStyles", ["concatStyles"], function() {
      .pipe(gulp.dest('css'));
 });
 
-gulp.task('styles', ["concatStyles", "uglifyStyles"], function() {
+gulp.task('styles', ["concatStyles", "uglifyStyles"], () => {
   return gulp.src("css/all.min.css")
       .pipe(gulp.dest('dist'));
 });
@@ -67,28 +67,28 @@ gulp.task('images', () =>
    .pipe(gulp.dest('dist/content'))
 );
 
-gulp.task('connect', function() {
+gulp.task('connect', () => {
   connect.server({
     root: 'dist',
     livereload: true
   });
 });
 
-gulp.task('html', function () {
+gulp.task('html',  () => {
   gulp.src('./index.html')
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
 });
 
-gulp.task('watch', function () {
+gulp.task('watch',  () => {
   gulp.watch(['./sass/**/*.scss'], ['styles', 'html']);
 });
 
-gulp.task('disconnect', function() {
+gulp.task('disconnect', () => {
   connect.serverClose();
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', () => {
   del(['dist/clean', 'dist/*', './dist',  'css/*.css*', 'js/*.js*']);
 });
 
